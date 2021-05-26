@@ -33,4 +33,9 @@ public class MusicDAOImpl implements MusicDAO {
 		return sql.selectOne(namespace+".view",bno);
 	}
 
+	@Override
+	public void modify(MusicVO vo) throws Exception {
+		sql.update(namespace+".modify",vo);
+	}
+
 }

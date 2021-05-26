@@ -12,4 +12,7 @@
 	<select id="view" parameterType="int" resultType="com.tj.music.domain.MusicVO">
 		select bno,title,singer,content,regdate,viewcnt from tbl_music where bno = #{bno}
 	</select>
+	<update id="modify" parameterType="com.tj.music.domain.MusicVO">
+		update tbl_music set title = #{title}, singer = #{singer}, content = #{content} where bno = #{bno}
+	</update>
 </mapper>

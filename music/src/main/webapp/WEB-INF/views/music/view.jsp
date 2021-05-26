@@ -17,5 +17,11 @@
 		
 		<label>추천 이유</label><br/>
 		${view.content }<br/>
+		
+		<p>
+		<hr>
+		<div>
+			<a href="/music/modify?bno=${view.bno }">정보 수정</a>
+		</div>
 </body>
 </html>

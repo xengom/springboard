@@ -32,4 +32,9 @@ public class MusicServiceImpl implements MusicService {
 		return dao.view(bno);
 	}
 
+	@Override
+	public void modify(MusicVO vo) throws Exception {
+		dao.modify(vo);
+	}
+
 }
