@@ -19,7 +19,7 @@
 		delete from tbl_music where bno = #{bno}
 	</delete>
 	
-	<!--  페이징 -->
+	<!--  목록출력 + 페이징 -->
 	<select id="listPage" parameterType="com.tj.music.domain.Criteria" resultType="com.tj.music.domain.MusicVO">
 		select bno,title,singer,regdate,viewcnt,content from ( 
 			select bno,title,singer,regdate,viewcnt,content, row_number() over (order by bno desc) as rNum 
@@ -33,4 +33,33 @@
 			select count(bno) from tbl_music where bno >0
 		]]>
 	</select>
+	
+	<!--  목록출력 + 페이징 + 검색 -->
+	<select id="listSearch" parameterType="com.tj.music.domain.Criteria" resultType="com.tj.music.domain.MusicVO">
+		select bno,title,singer,regdate,viewcnt,content from ( 
+			select bno,title,singer,regdate,viewcnt,content, row_number() over (order by bno desc) as rNum 
+				from tbl_music
+					<include refid="search"></include>
+        		) mb
+				where rNum between #{rowStart} and #{rowEnd} order by bno desc
+	</select>
+	
+	<!-- 조건에 맞는 게시물 개수 -->
+	<select id ="countSearch" resultType="int">
+		select count(bno) from tbl_music 
+		<include refid="search"></include>
+		<![CDATA[
+			and bno >0
+		]]>
+	</select>
+	
+	<!-- SQL조건문 -->
+	<sql id="search">
+		<if test="searchType != null">
+			  <if test="searchType == 't'.toString()">where title like '%' || #{keyword} || '%'</if>
+			  <if test="searchType == 's'.toString()">where singer like '%' || #{keyword} || '%'</if>
+			  <if test="searchType == 'ts'.toString()">where (title like '%' || #{keyword} || '%') or (singer like '%' || #{keyword} || '%')</if>
+	    </if>
+	</sql>
+	
 </mapper>

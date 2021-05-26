@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <ul>
 	<li>
-		<a href="/music/listPage?num=1">추천 음악 목록(페이징)</a>
+		<a href="/music/listSearch?page=1">추천 음악 목록(페이징+검색)</a>
+	</li>
+	<li>
+		<a href="/music/listPage?page=1">추천 음악 목록(페이징)</a>
 	</li>
 
 	<li>

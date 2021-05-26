@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tj.music.domain.Criteria;
 import com.tj.music.domain.MusicVO;
+import com.tj.music.domain.SearchCriteria;
 
 @Repository
 public class MusicDAOImpl implements MusicDAO {
@@ -54,5 +55,17 @@ public class MusicDAOImpl implements MusicDAO {
 	public List<MusicVO> listPage(Criteria cri) throws Exception {
 		return sql.selectList(namespace+".listPage",cri);
 	}
+
+	@Override
+	public int countSearch(SearchCriteria scri) throws Exception {
+		return sql.selectOne(namespace+".countSearch",scri);
+	}
+
+	@Override
+	public List<MusicVO> listSearch(SearchCriteria scri) throws Exception {
+		return sql.selectList(namespace+".listSearch", scri);
+	}
+	
+	
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.tj.music.dao.MusicDAO;
 import com.tj.music.domain.Criteria;
 import com.tj.music.domain.MusicVO;
+import com.tj.music.domain.SearchCriteria;
 
 @Service
 public class MusicServiceImpl implements MusicService {
@@ -51,6 +52,16 @@ public class MusicServiceImpl implements MusicService {
 	@Override
 	public List<MusicVO> listPage(Criteria cri) throws Exception {
 		return dao.listPage(cri);
+	}
+
+	@Override
+	public int countSearch(SearchCriteria scri) throws Exception {
+		return dao.countSearch(scri);
+	}
+
+	@Override
+	public List<MusicVO> listSearch(SearchCriteria scri) throws Exception {
+		return dao.listSearch(scri);
 	}
 
 }

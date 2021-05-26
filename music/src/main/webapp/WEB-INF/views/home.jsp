@@ -14,5 +14,6 @@
 <p><a href="/music/list">추천 음악 목록</a></p>
 <p><a href="/music/write">추천 음악 추가</a></p>
 <p><a href="/music/listPage">추천 음악 목록(페이징)</a></p>
+<p><a href="/music/listPageSearch">추천 음악 목록(페이징+검색)</a></p>
 </body>
 </html>

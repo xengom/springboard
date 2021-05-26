@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.tj.music.domain.Criteria;
 import com.tj.music.domain.MusicVO;
 import com.tj.music.domain.PageMaker;
+import com.tj.music.domain.SearchCriteria;
 import com.tj.music.service.MusicService;
 
 @Controller
@@ -65,7 +66,7 @@ public class MusicController {
 		return "redirect:/music/list";
 	}
 	
-	//페이징
+	//리스트 + 페이징추가
 	@RequestMapping(value="/listPage",method=RequestMethod.GET)
 	public void getListPage(Model model,@ModelAttribute("cri") Criteria cri) throws Exception{
 		List<MusicVO> list=null;
@@ -76,8 +77,21 @@ public class MusicController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.count());
 		model.addAttribute("pageMaker", pageMaker);
-		
 		model.addAttribute("select",cri.getPage());
 	}
+	
+	//리스트 + 페이징추가 + 검색추가
+		@RequestMapping(value="/listSearch",method=RequestMethod.GET)
+		public void getListPageSearch(Model model,@ModelAttribute("cri") SearchCriteria scri) throws Exception{
+			List<MusicVO> list=null;
+			list = service.listSearch(scri);
+			model.addAttribute("list", list);
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(service.count());
+			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("select",scri.getPage());
+		}
 	
 }
