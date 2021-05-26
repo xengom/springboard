@@ -38,4 +38,9 @@ public class MusicDAOImpl implements MusicDAO {
 		sql.update(namespace+".modify",vo);
 	}
 
+	@Override
+	public void delete(int bno) throws Exception {
+		sql.delete(namespace+".delete",bno);
+	}
+
 }

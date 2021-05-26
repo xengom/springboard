@@ -24,7 +24,7 @@
 		<p>
 		<hr>
 		<div>
-			<a href="/music/modify?bno=${view.bno }">정보 수정</a>
+			<a href="/music/modify?bno=${view.bno }">정보 수정</a>, <a href="/music/delete?bno=${view.bno }">정보 삭제</a>
 		</div>
 </body>
 </html>

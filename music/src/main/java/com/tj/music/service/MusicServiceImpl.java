@@ -37,4 +37,9 @@ public class MusicServiceImpl implements MusicService {
 		dao.modify(vo);
 	}
 
+	@Override
+	public void delete(int bno) throws Exception {
+		dao.delete(bno);
+	}
+
 }

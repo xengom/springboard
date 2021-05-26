@@ -56,4 +56,10 @@ public class MusicController {
 		return "redirect:/music/view?bno="+vo.getBno();
 	}
 	
+	@RequestMapping(value="/delete",method=RequestMethod.GET)
+	public String getDelete(@RequestParam("bno") int bno) throws Exception{
+		service.delete(bno);
+		return "redirect:/music/list";
+	}
+	
 }

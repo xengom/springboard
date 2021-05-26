@@ -9,4 +9,5 @@ public interface MusicDAO {
 	public void write(MusicVO vo) throws Exception;
 	public MusicVO view(int bno) throws Exception;
 	public void modify(MusicVO vo) throws Exception;
+	public void delete(int bno) throws Exception;
 }

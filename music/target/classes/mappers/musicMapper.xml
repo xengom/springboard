@@ -15,4 +15,7 @@
 	<update id="modify" parameterType="com.tj.music.domain.MusicVO">
 		update tbl_music set title = #{title}, singer = #{singer}, content = #{content} where bno = #{bno}
 	</update>
+	<delete id="delete" parameterType="int">
+		delete from tbl_music where bno = #{bno}
+	</delete>
 </mapper>
