@@ -22,4 +22,10 @@ public class MusicDAOImpl implements MusicDAO {
 		return sql.selectList(namespace+".list");
 	}
 
+	@Override
+	public void write(MusicVO vo) throws Exception {
+		sql.insert(namespace+".write",vo);
+		System.out.println("t2");
+	}
+
 }

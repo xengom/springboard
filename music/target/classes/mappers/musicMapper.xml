@@ -6,4 +6,7 @@
 	<select id="list" resultType="com.tj.music.domain.MusicVO">
 		select bno,title,singer,regdate,viewcnt from tbl_music
 	</select>
+	<insert id="write" parameterType="com.tj.music.domain.MusicVO">
+		insert into tbl_music(bno,title,singer) values(MUSIC_SEQ.NEXTVAL,#{title},#{singer})
+	</insert>
 </mapper>

@@ -6,4 +6,5 @@ import com.tj.music.domain.MusicVO;
 
 public interface MusicService {
 	public List<MusicVO> list() throws Exception;
+	public void write(MusicVO vo) throws Exception;
 }

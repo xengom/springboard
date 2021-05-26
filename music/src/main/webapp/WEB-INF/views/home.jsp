@@ -3,14 +3,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
+	<title>음악 추천 라이브러리</title>
 </head>
 <body>
 <h1>
-	Hello world!  
+	음악 추천 라이브러리 
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-<p><a href="/music/list">게시물 목록</a></p>
+<p><a href="/music/list">추천 음악 목록</a></p>
+<p><a href="/music/write">추천 음악 추가</a></p>
 </body>
 </html>

@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>추천 음악 목록</title>
 </head>
 <body>
-	<table>
+	<table border="1">
  		<thead>
 			<tr>
 				<th>번호</th>

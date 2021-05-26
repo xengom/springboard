@@ -21,4 +21,11 @@ public class MusicServiceImpl implements MusicService {
 		return dao.list();
 	}
 
+	@Override
+	public void write(MusicVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.write(vo);
+		
+	}
+
 }
