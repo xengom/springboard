@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,9 @@
 <title>추천 음악 목록</title>
 </head>
 <body>
+	<div id="nav">
+		<%@ include file="../include/nav.jsp" %>
+	</div>
 	<table border="1">
  		<thead>
 			<tr>
@@ -25,7 +29,9 @@
   						<a href="/music/view?bno=${list.bno }">${list.title }</a>
   					</td>
   					<td>${list.singer }</td>
-  					<td>${list.regdate }</td>
+  					<td>
+  						<fmt:formatDate value="${list.regdate}" pattern="yy-MM-dd" />
+  					</td>
   					<td>${list.viewcnt }</td>
   				</tr>
   			</c:forEach>

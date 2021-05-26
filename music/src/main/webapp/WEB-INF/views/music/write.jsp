@@ -8,6 +8,9 @@
 <title>추천 음악 추가</title>
 </head>
 <body>
+	<div id="nav">
+		<%@ include file="../include/nav.jsp" %>
+	</div>
 	<form method="post">
 		<p>
 		<input type="text" placeholder="제목" name="title" size="40"/><br />
