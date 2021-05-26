@@ -4,9 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tj.music.mappers.music">
 	<select id="list" resultType="com.tj.music.domain.MusicVO">
-		select bno,title,singer,regdate,viewcnt from tbl_music
+		select bno,title,singer,regdate,viewcnt,content from tbl_music
 	</select>
 	<insert id="write" parameterType="com.tj.music.domain.MusicVO">
-		insert into tbl_music(bno,title,singer) values(MUSIC_SEQ.NEXTVAL,#{title},#{singer})
+		insert into tbl_music(bno,title,singer,content) values(MUSIC_SEQ.NEXTVAL,#{title},#{singer},#{content})
 	</insert>
+	<select id="view" parameterType="int" resultType="com.tj.music.domain.MusicVO">
+		select bno,title,singer,content,regdate,viewcnt from tbl_music where bno = #{bno}
+	</select>
 </mapper>

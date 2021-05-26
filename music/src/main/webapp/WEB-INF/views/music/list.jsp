@@ -21,7 +21,9 @@
   			<c:forEach items="${list }" var="list">
   				<tr>
   					<td>${list.bno }</td>
-  					<td>${list.title }</td>
+  					<td>
+  						<a href="/music/view?bno=${list.bno }">${list.title }</a>
+  					</td>
   					<td>${list.singer }</td>
   					<td>${list.regdate }</td>
   					<td>${list.viewcnt }</td>

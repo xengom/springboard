@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tj.music.domain.MusicVO;
 import com.tj.music.service.MusicService;
@@ -34,4 +35,12 @@ public class MusicController {
 		service.write(vo);
 		return "redirect:/music/list";
 	}
+	
+	@RequestMapping(value="/view",method=RequestMethod.GET)
+	public void getView(@RequestParam("bno") int bno, Model model) throws Exception{
+		MusicVO vo = service.view(bno);
+		model.addAttribute("view", vo);
+	}
+	
+	
 }

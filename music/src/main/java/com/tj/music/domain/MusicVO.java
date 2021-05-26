@@ -8,6 +8,7 @@ public class MusicVO {
 	private String singer;
 	private Date regdate;
 	private int viewcnt;
+	private String content;
 	public int getBno() {
 		return bno;
 	}
@@ -37,5 +38,11 @@ public class MusicVO {
 	}
 	public void setViewcnt(int viewcnt) {
 		this.viewcnt = viewcnt;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 }

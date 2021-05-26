@@ -28,4 +28,9 @@ public class MusicDAOImpl implements MusicDAO {
 		System.out.println("t2");
 	}
 
+	@Override
+	public MusicVO view(int bno) throws Exception {
+		return sql.selectOne(namespace+".view",bno);
+	}
+
 }

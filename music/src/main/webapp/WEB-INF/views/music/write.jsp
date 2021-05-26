@@ -9,13 +9,14 @@
 </head>
 <body>
 	<form method="post">
-	
-		<label>제목</label>
-		<input type="text" name="title" /><br />
+		<p>
+		<input type="text" placeholder="제목" name="title" size="40"/><br />
 		
-		<label>가수</label>
-		<input type="text" name="singer" /><br />
-	
+		<input type="text" placeholder="가수" name="singer" size="40"/><br /><br />
+		
+		<textarea cols="50" rows="5" placeholder="추천 이유" name="content"></textarea><br/>
+		</p>
+		<hr>
 	<button type="submit">작성</button>
 	</form>
 </body>
