@@ -2,7 +2,7 @@ package com.tj.music.domain;
 
 import java.util.Date;
 
-public class musicVO {
+public class MusicVO {
 	private int bno;
 	private String title;
 	private String singer;

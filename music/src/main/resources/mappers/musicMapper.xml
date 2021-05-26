@@ -3,5 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tj.music.mappers.music">
-
+	<select id="list" resultType="com.tj.music.domain.MusicVO">
+		select bno,title,singer,regdate,viewcnt from tbl_music
+	</select>
 </mapper>
