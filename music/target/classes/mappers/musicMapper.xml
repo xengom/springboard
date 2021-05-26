@@ -18,4 +18,19 @@
 	<delete id="delete" parameterType="int">
 		delete from tbl_music where bno = #{bno}
 	</delete>
+	
+	<!--  페이징 -->
+	<select id="listPage" parameterType="com.tj.music.domain.Criteria" resultType="com.tj.music.domain.MusicVO">
+		select bno,title,singer,regdate,viewcnt,content from ( 
+			select bno,title,singer,regdate,viewcnt,content, row_number() over (order by bno desc) as rNum 
+				from tbl_music) mb
+				where rNum between #{rowStart} and #{rowEnd}order by bno desc
+	</select>
+	
+	<!-- 게시물 총 개수 -->
+	<select id ="count" resultType="int">
+		<![CDATA[
+			select count(bno) from tbl_music where bno >0
+		]]>
+	</select>
 </mapper>

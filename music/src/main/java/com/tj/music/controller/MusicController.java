@@ -6,11 +6,14 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tj.music.domain.Criteria;
 import com.tj.music.domain.MusicVO;
+import com.tj.music.domain.PageMaker;
 import com.tj.music.service.MusicService;
 
 @Controller
@@ -60,6 +63,21 @@ public class MusicController {
 	public String getDelete(@RequestParam("bno") int bno) throws Exception{
 		service.delete(bno);
 		return "redirect:/music/list";
+	}
+	
+	//페이징
+	@RequestMapping(value="/listPage",method=RequestMethod.GET)
+	public void getListPage(Model model,@ModelAttribute("cri") Criteria cri) throws Exception{
+		List<MusicVO> list=null;
+		list = service.listPage(cri);
+		model.addAttribute("list", list);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.count());
+		model.addAttribute("pageMaker", pageMaker);
+		
+		model.addAttribute("select",cri.getPage());
 	}
 	
 }
