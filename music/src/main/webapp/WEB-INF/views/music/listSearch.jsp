@@ -43,13 +43,13 @@
 
 <div>
   <c:if test="${pageMaker.prev}">
-   <span>[ <a href="listPageSearch${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a> ]</span>
+   <span>[ <a href="listSearch${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a> ]</span>
   </c:if> 
   
   <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
    <span>
    	<c:if test="${select != idx }">
-   		<a href="listPageSearch${pageMaker.makeSearch(idx)}">${idx}</a>
+   		<a href="listSearch${pageMaker.makeSearch(idx)}">${idx}</a>
    	</c:if>
    	
    	<c:if test="${select==idx }">
@@ -59,13 +59,12 @@
   </c:forEach>
     
   <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-   <span>[ <a href="listPage${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a> ]</span>
+   <span>[ <a href="listSearch${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a> ]</span>
   </c:if> 
 </div>
 
 <div class="search">
  <select name="searchType">
-  <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
   <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
   <option value="s"<c:out value="${scri.searchType eq 's' ? 'selected' : ''}"/>>가수</option>
   <option value="ts"<c:out value="${scri.searchType eq 'ts' ? 'selected' : ''}"/>>제목+가수</option>
