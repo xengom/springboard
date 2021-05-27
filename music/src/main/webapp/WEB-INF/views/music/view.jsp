@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,7 @@
 			<button id="list_btn">목록으로</button>
 			<button id="modify_btn">수정</button>
 			<button id="delete_btn">삭제</button>
-		
+			
 		<script>
 			var formObj = $("form[role='form']");
 			$("#list_btn").click(function(){
@@ -57,7 +58,24 @@
 				formObj.submit();
 			});
 		</script>
-		</p>
+			
+		<!-- 게시물 끝 -->
+		<div id="reply">
+		 <ol class="replyList">
+		 <c:forEach items="${repList}" var="repList">
+		 <li>
+		  <p>
+		   작성자 : ${repList.writer}<br />
+		   작성 날짜 :  <fmt:formatDate value="${repList.regdate}" pattern="yy-MM-dd" />
+		  </p>
+		  <p>${repList.content}</p>
+		 </li>
+		 </c:forEach>   
+		 </ol>
+		</div>
+		
+		
+		
 		
 </body>
 </html>

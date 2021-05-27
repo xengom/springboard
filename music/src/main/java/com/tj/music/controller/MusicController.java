@@ -15,8 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.tj.music.domain.Criteria;
 import com.tj.music.domain.MusicVO;
 import com.tj.music.domain.PageMaker;
+import com.tj.music.domain.ReplyVO;
 import com.tj.music.domain.SearchCriteria;
 import com.tj.music.service.MusicService;
+import com.tj.music.service.ReplyService;
 
 @Controller
 @RequestMapping("/music/*")
@@ -24,6 +26,9 @@ public class MusicController {
 
 	@Inject
 	MusicService service;
+	
+	@Inject
+	ReplyService RepService;
 	
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public void getList(Model model) throws Exception{
@@ -48,6 +53,12 @@ public class MusicController {
 		MusicVO vo = service.view(bno);
 		model.addAttribute("view", vo);
 		model.addAttribute("scri",scri);
+		
+		//댓글읽기 추가
+		List<ReplyVO> repList = RepService.readReply(bno);
+		model.addAttribute("repList", repList);
+		
+		System.out.println(repList);
 	}
 	
 	@RequestMapping(value="/modify",method=RequestMethod.GET)
