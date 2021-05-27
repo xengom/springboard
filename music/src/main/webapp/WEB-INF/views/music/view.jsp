@@ -49,7 +49,39 @@
 		<textarea id="content" name="content" class="form-control" readonly="readonly">"${view.content }"</textarea>
 	</div>	
 	
-	<br><br>
+	<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+	<div id="player"></div>
+		<script>
+			// 2. This code loads the IFrame Player API code asynchronously.
+	      	var myObj = ${json};
+		  	var vid = myObj.items[0].id.videoId;
+	      	var tag = document.createElement('script');
+			tag.src = "https://www.youtube.com/iframe_api";
+      		var firstScriptTag = document.getElementsByTagName('script')[0];
+      		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			// 3. This function creates an <iframe> (and YouTube player)
+      		//    after the API code downloads.
+      		var player;
+      		function onYouTubeIframeAPIReady() {
+        		player = new YT.Player('player', {
+          		height: '360',
+         	 	width: '640',
+          		videoId: vid,
+		          	events: {
+		            	'onReady': onPlayerReady
+		          	}
+        		});
+      		}
+
+	      // 4. The API will call this function when the video player is ready.
+	      function onPlayerReady(event) {
+	        event.target.playVideo();
+	      }
+
+	     
+    </script>
+	
+	
 	<div class="form-group">
 		<button type="button" class="btn btn-primary" id="list_btn">목록으로</button>
 		<button type="button" class="btn btn-warning" id="modify_btn">수정</button>

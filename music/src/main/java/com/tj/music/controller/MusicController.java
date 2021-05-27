@@ -19,6 +19,7 @@ import com.tj.music.domain.ReplyVO;
 import com.tj.music.domain.SearchCriteria;
 import com.tj.music.service.MusicService;
 import com.tj.music.service.ReplyService;
+import com.tj.music.youtube.Search;
 
 @Controller
 @RequestMapping("/music/*")
@@ -50,6 +51,11 @@ public class MusicController {
 		//댓글읽기 추가
 		List<ReplyVO> repList = RepService.readReply(bno);
 		model.addAttribute("repList", repList);
+		
+		//유튜브 추가
+		Search sc = new Search();
+		model.addAttribute("json",sc.search(vo.getTitle()+vo.getSinger()));
+		
 	}
 	
 	@RequestMapping(value="/modify",method=RequestMethod.GET)

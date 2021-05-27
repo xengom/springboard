@@ -8,7 +8,7 @@ import java.net.URLEncoder;
 
 
 public class Search {
-	public String search(String search) throws IOException {
+	public StringBuffer search(String search) throws IOException {
 		
 		String apiurl = "https://www.googleapis.com/youtube/v3/search";
 		apiurl += "?key=AIzaSyA0E7WSRk5FVVvIClEkV82rf19HqY54IMQ";
@@ -20,7 +20,6 @@ public class Search {
 		con.setRequestMethod("GET");
 		
 		BufferedReader br = new BufferedReader(new java.io.InputStreamReader(con.getInputStream(),"UTF-8"));
-		System.out.println(br);
 		String inputLine;
 		StringBuffer response = new StringBuffer();
 		
@@ -28,6 +27,6 @@ public class Search {
 			response.append(inputLine);
 		}
 		br.close();
-		return response.toString();
+		return response;
 	}
 }
