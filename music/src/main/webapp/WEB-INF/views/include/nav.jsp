@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<ul>
+<ul class="nav nav-pills" >
 	<li>
 		<a href="/music/listSearch?page=1">추천 음악 목록(페이징+검색)</a>
 	</li>
