@@ -50,8 +50,10 @@
 	</div>	
 	
 	<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-	<div id="player"></div>
-		<script>
+	<div class=video-container>
+		<div id="player"></div>
+	</div>	
+	<script>
 			// 2. This code loads the IFrame Player API code asynchronously.
 	      	var myObj = ${json};
 		  	var vid = myObj.items[0].id.videoId;
@@ -64,8 +66,8 @@
       		var player;
       		function onYouTubeIframeAPIReady() {
         		player = new YT.Player('player', {
-          		height: '360',
-         	 	width: '640',
+          		height: '500',
+         	 	width: '100%',
           		videoId: vid,
 		          	events: {
 		            	'onReady': onPlayerReady
@@ -76,11 +78,8 @@
 	      // 4. The API will call this function when the video player is ready.
 	      function onPlayerReady(event) {
 	        event.target.playVideo();
-	      }
-
-	     
+	      }  
     </script>
-	
 	
 	<div class="form-group">
 		<button type="button" class="btn btn-primary" id="list_btn">목록으로</button>

@@ -11,7 +11,7 @@ public class Search {
 	public StringBuffer search(String search) throws IOException {
 		
 		String apiurl = "https://www.googleapis.com/youtube/v3/search";
-		apiurl += "?key=AIzaSyA0E7WSRk5FVVvIClEkV82rf19HqY54IMQ";
+		apiurl += "?key=AIzaSyDE6kYAdvN0ucrRU6LFdCG0xbGE3hzobYA";
 		apiurl += "&part=snippet&type=video&maxResults=1&videoEmbeddable=true";
 		apiurl += "&q="+URLEncoder.encode(search,"UTF-8");
 		
