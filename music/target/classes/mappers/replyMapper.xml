@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tj.music.mappers.reply">
- <!-- 댓글 조회 -->
  <select id="readReply" resultType="com.tj.music.domain.ReplyVO">
  	select rno,content,writer,regdate from myreply where bno=#{bno}
  </select>
@@ -10,4 +9,17 @@
  <insert id="writeReply">
  	insert into myreply(bno,rno,content,writer) values(#{bno},myreply_seq.nextval,#{content},#{writer})
  </insert>
+ 
+ <!-- 특정 댓글 조회 -->
+	<select id="readReplySelect" resultType="com.tj.music.domain.ReplyVO">
+	 select bno, rno, content, writer, regdate from myreply where rno = #{rno}
+	</select>
+	
+ <update id="updateReply">
+ 	update myreply set content = #{content} where rno = #{rno}
+ </update>
+ 
+ <delete id="deleteReply">
+ 	delete from myreply where rno = #{rno}
+ </delete>
 </mapper>

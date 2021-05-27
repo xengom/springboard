@@ -29,4 +29,19 @@ public class ReplyDAOImpl implements ReplyDAO {
 		sql.insert(namespace+".writeReply", vo);
 	}
 
+	@Override
+	public ReplyVO readReplySelect(int rno) throws Exception {
+		return sql.selectOne(namespace+".readReplySelect", rno);
+	}
+
+	@Override
+	public void replyUpdate(ReplyVO vo) throws Exception {
+		sql.update(namespace+".updateReply",vo);
+	}
+
+	@Override
+	public void replyDelete(ReplyVO vo) throws Exception {
+		sql.delete(namespace+".deleteReply",vo);
+	}
+
 }

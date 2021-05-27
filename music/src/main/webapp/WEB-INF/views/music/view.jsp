@@ -70,6 +70,30 @@
 		   작성 날짜 :  <fmt:formatDate value="${repList.regdate}" pattern="yy-MM-dd" />
 		  </p>
 		  <p>${repList.content}</p>
+		  <p>              
+			 <button type="button" class="replyUpdate" data-rno="${repList.rno}">댓글수정</button>
+			 <button type="button" class="replyDelete" data-rno="${repList.rno}">댓글삭제</button>
+			 
+			 <script>
+			  $(".replyUpdate").click(function(){
+			   self.location = "/music/replyUpdate?bno=${view.bno}"
+			    + "&page=${scri.page}"
+			    + "&perPageNum=${scri.perPageNum}"
+			    + "&searchType=${scri.searchType}"
+			    + "&keyword=${scri.keyword}"
+			    + "&rno=" + $(this).attr("data-rno");        
+			  });
+			  
+			  $(".replyDelete").click(function(){
+				   self.location = "/music/replyDelete?bno=${view.bno}"
+				    + "&page=${scri.page}"
+				    + "&perPageNum=${scri.perPageNum}"
+				    + "&searchType=${scri.searchType}"
+				    + "&keyword=${scri.keyword}"
+				    + "&rno=" + $(this).attr("data-rno"); 
+				  });    
+			 </script>
+			</p>
 		 </li>
 		 </c:forEach>   
 		 </ol>
