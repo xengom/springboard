@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.tj.music.dao.MusicDAO;
-import com.tj.music.domain.Criteria;
 import com.tj.music.domain.MusicVO;
 import com.tj.music.domain.SearchCriteria;
 
@@ -16,12 +15,6 @@ public class MusicServiceImpl implements MusicService {
 	
 	@Inject
 	private MusicDAO dao;
-	
-	@Override
-	public List<MusicVO> list() throws Exception {
-		// TODO Auto-generated method stub
-		return dao.list();
-	}
 
 	@Override
 	public void write(MusicVO vo) throws Exception {
@@ -47,11 +40,6 @@ public class MusicServiceImpl implements MusicService {
 	@Override
 	public int count() throws Exception {
 		return dao.count();
-	}
-
-	@Override
-	public List<MusicVO> listPage(Criteria cri) throws Exception {
-		return dao.listPage(cri);
 	}
 
 	@Override

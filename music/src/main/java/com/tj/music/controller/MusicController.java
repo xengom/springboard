@@ -30,13 +30,6 @@ public class MusicController {
 	@Inject
 	ReplyService RepService;
 	
-	@RequestMapping(value="/list",method=RequestMethod.GET)
-	public void getList(Model model) throws Exception{
-		List<MusicVO> list=null;
-		list = service.list();
-		model.addAttribute("list", list);
-	}
-	
 	@RequestMapping(value="/write",method=RequestMethod.GET)
 	public void getWrite() throws Exception{
 		
@@ -93,19 +86,6 @@ public class MusicController {
 		return "redirect:/music/listSearch";
 	}
 	
-	//리스트 + 페이징추가
-	@RequestMapping(value="/listPage",method=RequestMethod.GET)
-	public void getListPage(Model model,@ModelAttribute("cri") Criteria cri) throws Exception{
-		List<MusicVO> list=null;
-		list = service.listPage(cri);
-		model.addAttribute("list", list);
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.count());
-		model.addAttribute("pageMaker", pageMaker);
-		model.addAttribute("select",cri.getPage());
-	}
 	
 	//리스트 + 페이징추가 + 검색추가
 		@RequestMapping(value="/listSearch",method=RequestMethod.GET)

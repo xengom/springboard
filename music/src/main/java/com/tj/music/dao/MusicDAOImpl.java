@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.tj.music.domain.Criteria;
 import com.tj.music.domain.MusicVO;
 import com.tj.music.domain.SearchCriteria;
 
@@ -18,11 +17,7 @@ public class MusicDAOImpl implements MusicDAO {
 	private SqlSession sql;
 	
 	private static String namespace = "com.tj.music.mappers.music";
-	
-	@Override
-	public List<MusicVO> list() throws Exception {
-		return sql.selectList(namespace+".list");
-	}
+
 
 	@Override
 	public void write(MusicVO vo) throws Exception {
@@ -47,11 +42,6 @@ public class MusicDAOImpl implements MusicDAO {
 	@Override
 	public int count() throws Exception {
 		return sql.selectOne(namespace+".count");
-	}
-
-	@Override
-	public List<MusicVO> listPage(Criteria cri) throws Exception {
-		return sql.selectList(namespace+".listPage",cri);
 	}
 
 	@Override
