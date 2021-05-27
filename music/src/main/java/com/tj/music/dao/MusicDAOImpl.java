@@ -1,6 +1,5 @@
 package com.tj.music.dao;
 
-
 import java.util.List;
 
 import javax.inject.Inject;

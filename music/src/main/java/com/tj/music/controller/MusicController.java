@@ -82,16 +82,21 @@ public class MusicController {
 	
 	//리스트 + 페이징추가 + 검색추가
 		@RequestMapping(value="/listSearch",method=RequestMethod.GET)
-		public void getListPageSearch(Model model,@ModelAttribute("cri") SearchCriteria scri) throws Exception{
+		public void getListPageSearch(Model model,@ModelAttribute("scri") SearchCriteria scri) throws Exception{
 			List<MusicVO> list=null;
 			list = service.listSearch(scri);
 			model.addAttribute("list", list);
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
-			pageMaker.setTotalCount(service.count());
+			pageMaker.setTotalCount(service.countSearch(scri));
 			model.addAttribute("pageMaker", pageMaker);
 			model.addAttribute("select",scri.getPage());
+			
+			//검색조건 유지
+			model.addAttribute("searchType", scri.getSearchType());
+			model.addAttribute("keyword", scri.getKeyword());
 		}
+	
 	
 }

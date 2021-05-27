@@ -48,9 +48,6 @@
 	<select id ="countSearch" resultType="int">
 		select count(bno) from tbl_music 
 		<include refid="search"></include>
-		<![CDATA[
-			and bno >0
-		]]>
 	</select>
 	
 	<!-- SQL조건문 -->
