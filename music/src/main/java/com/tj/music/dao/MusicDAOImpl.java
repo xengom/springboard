@@ -27,7 +27,6 @@ public class MusicDAOImpl implements MusicDAO {
 	@Override
 	public void write(MusicVO vo) throws Exception {
 		sql.insert(namespace+".write",vo);
-		System.out.println("t2");
 	}
 
 	@Override

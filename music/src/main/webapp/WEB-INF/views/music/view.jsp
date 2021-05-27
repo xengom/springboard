@@ -39,7 +39,7 @@
 			<button id="list_btn">목록으로</button>
 			<button id="modify_btn">수정</button>
 			<button id="delete_btn">삭제</button>
-			
+		<hr>	
 		<script>
 			var formObj = $("form[role='form']");
 			$("#list_btn").click(function(){
@@ -61,6 +61,7 @@
 			
 		<!-- 게시물 끝 -->
 		<div id="reply">
+			<h4>댓글</h4>
 		 <ol class="replyList">
 		 <c:forEach items="${repList}" var="repList">
 		 <li>
@@ -72,6 +73,33 @@
 		 </li>
 		 </c:forEach>   
 		 </ol>
+		 <section class="replyForm">
+			<form role="form2" method="post" autocomplete="off">
+			
+			 <input type="hidden" id="bno" name="bno" value="${view.bno}" readonly="readonly" />
+			 <input type="hidden" id="page" name="page" value="${scri.page}" readonly="readonly" />
+			 <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}" readonly="readonly" />
+			 <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}" readonly="readonly" />
+			 <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}" readonly="readonly" />
+			<hr>
+				<h4>새댓글 작성</h4>
+			 <p><label for="writer">이름 </label><input type="text" id="writer" name="writer" /></p>
+			 <p><label for="content">내용 </label><textarea id="content" name="content"></textarea></p>
+			 <hr>
+			 <p>
+			  <button type="button" class="repSubmit">작성</button>
+			</form>
+			
+			  <script>
+			  var formObj = $(".replyForm form[role='form2']");
+			        
+			  $(".repSubmit").click(function(){
+			   formObj.attr("action", "replyWrite");
+			   formObj.submit();
+			  });
+			  </script>
+			
+		</section>
 		</div>
 		
 		

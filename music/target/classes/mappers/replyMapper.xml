@@ -7,4 +7,7 @@
  	select rno,content,writer,regdate from myreply where bno=#{bno}
  </select>
 
+ <insert id="writeReply">
+ 	insert into myreply(bno,rno,content,writer) values(#{bno},myreply_seq.nextval,#{content},#{writer})
+ </insert>
 </mapper>

@@ -24,4 +24,9 @@ public class ReplyDAOImpl implements ReplyDAO {
 		return sql.selectList(namespace+".readReply", bno);
 	}
 
+	@Override
+	public void writeReply(ReplyVO vo) throws Exception {
+		sql.insert(namespace+".writeReply", vo);
+	}
+
 }
