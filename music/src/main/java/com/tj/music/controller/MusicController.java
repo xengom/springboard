@@ -57,8 +57,6 @@ public class MusicController {
 		//댓글읽기 추가
 		List<ReplyVO> repList = RepService.readReply(bno);
 		model.addAttribute("repList", repList);
-		
-		System.out.println(repList);
 	}
 	
 	@RequestMapping(value="/modify",method=RequestMethod.GET)

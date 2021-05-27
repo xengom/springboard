@@ -19,13 +19,11 @@
 			</p>
 			<p>정말로 삭제하시겠습니까?</p>
 			<p>
-			
-		
 		<p>
 		<hr>
 		<p>
 			<button type="submit">삭제</button>
-			<button id="cancel_btn">취소</button>
+			<button type="button" id="cancel_btn">취소</button>
 		</form>
 		<script>
 			var formObj = $("form[role='form']");
