@@ -17,4 +17,6 @@ public interface MusicDAO {
 	public int countSearch(SearchCriteria scri) throws Exception;
 	//목록+페이징+검색
 	public List<MusicVO> listSearch(SearchCriteria scri) throws Exception;
+	//게시물조회수
+	public void Hit(int bno) throws Exception;
 }

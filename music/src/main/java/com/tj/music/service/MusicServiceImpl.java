@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tj.music.dao.MusicDAO;
 import com.tj.music.domain.MusicVO;
@@ -21,9 +23,11 @@ public class MusicServiceImpl implements MusicService {
 		// TODO Auto-generated method stub
 		dao.write(vo);
 	}
-
+	
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public MusicVO view(int bno) throws Exception {
+		dao.Hit(bno);
 		return dao.view(bno);
 	}
 
@@ -51,5 +55,5 @@ public class MusicServiceImpl implements MusicService {
 	public List<MusicVO> listSearch(SearchCriteria scri) throws Exception {
 		return dao.listSearch(scri);
 	}
-
+	
 }

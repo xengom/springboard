@@ -3,9 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tj.music.mappers.music">
-	<select id="list" resultType="com.tj.music.domain.MusicVO">
-		select bno,title,singer,regdate,viewcnt,content from tbl_music
-	</select>
 	<insert id="write" parameterType="com.tj.music.domain.MusicVO">
 		insert into tbl_music(bno,title,singer,content) values(MUSIC_SEQ.NEXTVAL,#{title},#{singer},#{content})
 	</insert>
@@ -18,14 +15,6 @@
 	<delete id="delete" parameterType="int">
 		delete from tbl_music where bno = #{bno}
 	</delete>
-	
-	<!--  목록출력 + 페이징 -->
-	<select id="listPage" parameterType="com.tj.music.domain.Criteria" resultType="com.tj.music.domain.MusicVO">
-		select bno,title,singer,regdate,viewcnt,content from ( 
-			select bno,title,singer,regdate,viewcnt,content, row_number() over (order by bno desc) as rNum 
-				from tbl_music) mb
-				where rNum between #{rowStart} and #{rowEnd}order by bno desc
-	</select>
 	
 	<!-- 게시물 총 개수 -->
 	<select id ="count" resultType="int">
@@ -49,6 +38,11 @@
 		select count(bno) from tbl_music 
 		<include refid="search"></include>
 	</select>
+	
+	<!-- 게시물 조회수카운트 -->
+	<update id="Hit" parameterType="int">
+		update tbl_music set viewcnt = viewcnt+1 where bno = #{bno}
+	</update>
 	
 	<!-- SQL조건문 -->
 	<sql id="search">

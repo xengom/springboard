@@ -53,6 +53,11 @@ public class MusicDAOImpl implements MusicDAO {
 	public List<MusicVO> listSearch(SearchCriteria scri) throws Exception {
 		return sql.selectList(namespace+".listSearch", scri);
 	}
+
+	@Override
+	public void Hit(int bno) throws Exception {
+		sql.update(namespace+".Hit", bno);
+	}
 	
 	
 
