@@ -69,11 +69,12 @@ public class MusicController {
 	@RequestMapping(value="/modify",method=RequestMethod.POST)
 	public String postModify(MusicVO vo,@ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 		service.modify(vo);
+		rttr.addAttribute("bno", vo.getBno());
 		rttr.addAttribute("page", scri.getPage());
 		rttr.addAttribute("perPageNum", scri.getPerPageNum());
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
-		return "redirect:/music/listSearch";
+		return "redirect:/music/view";
 	}
 	
 	@RequestMapping(value="/delete",method=RequestMethod.GET)
@@ -168,7 +169,7 @@ public class MusicController {
 	 model.addAttribute("scri", scri);
 	}
 
-	// 댓글 수정 GET
+	// 댓글 삭제 GET
 	@RequestMapping(value = "/replyDelete", method = RequestMethod.GET)
 	public void getReplyDelete(@RequestParam("rno") int rno,
 	      @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
