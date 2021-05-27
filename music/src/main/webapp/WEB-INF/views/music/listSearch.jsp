@@ -28,7 +28,7 @@
   				<tr>
   					<td>${list.bno }</td>
   					<td>
-  						<a href="/music/view?bno=${list.bno }">${list.title }</a>
+  						<a href="/music/view?bno=${list.bno }&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${list.title }</a>
   					</td>
   					<td>${list.singer }</td>
   					<td>

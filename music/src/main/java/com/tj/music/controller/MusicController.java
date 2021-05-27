@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tj.music.domain.Criteria;
 import com.tj.music.domain.MusicVO;
@@ -39,31 +40,47 @@ public class MusicController {
 	@RequestMapping(value="/write",method=RequestMethod.POST)
 	public String postWrite(MusicVO vo) throws Exception{
 		service.write(vo);
-		return "redirect:/music/list";
+		return "redirect:/music/listSearch";
 	}
 	
 	@RequestMapping(value="/view",method=RequestMethod.GET)
-	public void getView(@RequestParam("bno") int bno, Model model) throws Exception{
+	public void getView(@RequestParam("bno") int bno,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		MusicVO vo = service.view(bno);
 		model.addAttribute("view", vo);
+		model.addAttribute("scri",scri);
 	}
 	
 	@RequestMapping(value="/modify",method=RequestMethod.GET)
-	public void getModify(@RequestParam("bno") int bno, Model model) throws Exception{
+	public void getModify(@RequestParam("bno") int bno,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		MusicVO vo = service.view(bno);
-		model.addAttribute("view", vo);
+		model.addAttribute("modify", vo);
+		model.addAttribute("scri", scri);
 	}
 	
 	@RequestMapping(value="/modify",method=RequestMethod.POST)
-	public String postModify(MusicVO vo) throws Exception{
+	public String postModify(MusicVO vo,@ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 		service.modify(vo);
-		return "redirect:/music/view?bno="+vo.getBno();
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		return "redirect:/music/listSearch";
 	}
 	
 	@RequestMapping(value="/delete",method=RequestMethod.GET)
-	public String getDelete(@RequestParam("bno") int bno) throws Exception{
+	public void getDelete(@RequestParam("bno") int bno,@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
+		model.addAttribute("delete", bno);
+		model.addAttribute("scri", scri);
+	}
+	
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	public String postDelete(@RequestParam("bno") int bno,@ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 		service.delete(bno);
-		return "redirect:/music/list";
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		return "redirect:/music/listSearch";
 	}
 	
 	//리스트 + 페이징추가
