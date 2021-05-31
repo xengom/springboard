@@ -19,7 +19,12 @@
 		<nav id="nav">
 			<%@ include file="../views/include/nav.jsp" %>
 		</nav>
-		<h2 class="text-center"> 어서오세요 ${member.userName}님!</h2>
+		<div class="form-group mt-3">
+			어서오세요 ${member.userName}님!
+			<form role="logout" action="member/logout" method="get" autocomplete="off">
+				<button type="submit" class="btn btn-default">로그아웃</button>
+			</form>
+		</div>
 	</c:if>
 	<c:if test="${member==null }">
 		<form role="form" method="post" autocomplete="off" action="member/login">

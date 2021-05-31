@@ -3,6 +3,7 @@ package com.tj.music.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,8 +32,11 @@ public class MusicController {
 	ReplyService RepService;
 	
 	@RequestMapping(value="/write",method=RequestMethod.GET)
-	public void getWrite() throws Exception{
-		
+	public void getWrite(HttpSession session, Model model) throws Exception{
+		Object loginInfo = session.getAttribute("member");
+		if(loginInfo == null) {
+			model.addAttribute("msg",false);
+		}
 	}
 	
 	@RequestMapping(value="/write",method=RequestMethod.POST)
@@ -94,7 +98,7 @@ public class MusicController {
 	
 	//리스트 + 페이징추가 + 검색추가
 		@RequestMapping(value="/listSearch",method=RequestMethod.GET)
-		public void getListPageSearch(Model model,@ModelAttribute("scri") SearchCriteria scri) throws Exception{
+		public void getListPageSearch(HttpSession session,Model model,@ModelAttribute("scri") SearchCriteria scri) throws Exception{
 			List<MusicVO> list=null;
 			list = service.listSearch(scri);
 			model.addAttribute("list", list);
@@ -108,6 +112,12 @@ public class MusicController {
 			//검색조건 유지
 			model.addAttribute("searchType", scri.getSearchType());
 			model.addAttribute("keyword", scri.getKeyword());
+			
+			//로그인확인
+			Object loginInfo = session.getAttribute("member");
+			if(loginInfo == null) {
+				model.addAttribute("msg",false);
+			}
 		}
 		
 	// 댓글 작성
@@ -163,5 +173,4 @@ public class MusicController {
 	 model.addAttribute("readReply", vo);
 	 model.addAttribute("scri", scri);
 	}
-	
 }

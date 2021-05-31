@@ -18,31 +18,36 @@
 	<header>
 		<%@ include file="../include/header.jsp" %>
 	</header>
-	<nav id="nav">
-		<%@ include file="../include/nav.jsp" %>
-	</nav>
-	<form method="post" >
-		<div class="form-group">
-			 <label for="title" class="control-label">제목 </label>
-			 <input type="text" id="title" name="title" class="form-control"/>
+		<c:if test="${msg==null }">
+		<nav id="nav">
+			<%@ include file="../include/nav.jsp" %>
+		</nav>
+		<form method="post" >
+			<div class="form-group">
+				 <label for="title" class="control-label">제목 </label>
+				 <input type="text" id="title" name="title" class="form-control"/>
+			</div>
+			<p>
+			<div class="form-group">
+				 <label for="singer" class="control-label">가수 </label>
+				 <input type="text" id="singer" name="singer" class="form-control"/>
+			</div>
+			<div class="form-group">
+				 <label for="writer" class="control-label">작성자 </label>
+				 <input type="text" id="writer" name="writer" value="${member.userName }" readonly="readonly" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="content" class="control-label">추천 이유</label>
+				<textarea id="content" name="content" class="form-control col-sm-5" rows="5"></textarea>
+			</div>	
+		<div class="form-group mt-3">
+			<button type="submit" class="btn btn-success">작성</button>
 		</div>
-		<p>
-		<div class="form-group">
-			 <label for="singer" class="control-label">가수 </label>
-			 <input type="text" id="singer" name="singer" class="form-control"/>
-		</div>
-		<div class="form-group">
-			 <label for="writer" class="control-label">작성자 </label>
-			 <input type="text" id="writer" name="writer" value="${member.userName }" readonly="readonly" class="form-control"/>
-		</div>
-		<div class="form-group">
-			<label for="content" class="control-label">추천 이유</label>
-			<textarea id="content" name="content" class="form-control col-sm-5" rows="5"></textarea>
-		</div>	
-	<div class="form-group mt-3">
-		<button type="submit" class="btn btn-success">작성</button>
-	</div>
-	</form>
+		</form>
+	</c:if>
+	<c:if test="${msg==false }">
+		<p style="color:#f00;">로그인을 하셔야 글을 작성할 수 있습니다.</p>
+	</c:if>
 </div>
 </body>
 </html>
