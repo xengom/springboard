@@ -11,6 +11,10 @@
 	<title>회원가입</title> 
 </head>
 <body>
+<div class="container">
+	<header>
+		<%@ include file="../include/header.jsp" %>
+	</header>
 	<form role="form" method="post" autocomplete="off">
 		<div class="form-group">
 			<label for="userId" class="control-label">아이디 </label>
@@ -30,5 +34,6 @@
 			<button type="button" class="btn btn-danger" onclick="location.href='/'">메인화면</button>
 		</div>
 	</form>
+</div>
 </body>
 </html>

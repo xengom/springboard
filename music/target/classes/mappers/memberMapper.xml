@@ -6,4 +6,8 @@
 	<insert id="register">
 		insert into MYMEMBER(userid, userpass, username) values(#{userId}, #{userPass}, #{userName})
 	</insert>
+	<!-- 로그인 -->
+	<select id="login" resultType="com.tj.music.domain.MemberVO">
+		select userid, username from MYMEMBER where userid=#{userId} and userpass=#{userPass}
+	</select>
 </mapper>
