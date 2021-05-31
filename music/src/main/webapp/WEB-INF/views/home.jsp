@@ -16,6 +16,9 @@
 		<%@ include file="./include/header.jsp" %>
 	</header>
 	<c:if test="${member!=null }">
+		<nav id="nav">
+			<%@ include file="../views/include/nav.jsp" %>
+		</nav>
 		<h2 class="text-center"> 어서오세요 ${member.userName}님!</h2>
 	</c:if>
 	<c:if test="${member==null }">
@@ -42,7 +45,7 @@
 	</c:if>
 	<c:if test="${msg==false }">
 		<p style="color:#f00;">로그인에 실패하였습니다.</p>
-	</c:if>>
+	</c:if>
 </div>
 </body>
 </html>

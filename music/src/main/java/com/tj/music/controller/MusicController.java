@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.tj.music.domain.Criteria;
 import com.tj.music.domain.MusicVO;
 import com.tj.music.domain.PageMaker;
 import com.tj.music.domain.ReplyVO;

@@ -30,12 +30,15 @@
 		<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum }" readonly="readonly"/>
 		<input type="hidden" id="searchType" name="searchType" value="${scri.searchType }" readonly="readonly"/>
 		<input type="hidden" id="keyword" name="keyword" value="${scri.keyword }" readonly="readonly"/>
-		<div class="form-group">
-			<label for="bno" class="control-label">번호</label>
-			<input type="text" id="bno" name="bno" class="form-control" value="${view.bno }" readonly="readonly"/>
-		</div>
 	</form>
-	
+	<div class="form-group">
+		<label for="bno" class="control-label">번호</label>
+		<input type="text" id="bno" name="bno" class="form-control" value="${view.bno }" readonly="readonly"/>
+	</div>
+	<div class="form-group">
+		<label for="writer" class="control-label">작성자</label>
+		<input type="text" id="writer" name="writer" class="form-control" value="${view.writer }" readonly="readonly"/>
+	</div>	
 	<div class="form-group">
 		<label for="title" class="control-label">제목</label>
 		<input type="text" id="title" name="title" class="form-control" value="${view.title }" readonly="readonly"/>

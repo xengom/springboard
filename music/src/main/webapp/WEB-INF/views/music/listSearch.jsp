@@ -30,6 +30,7 @@
 			    <th>제목</th>
 			    <th>가수</th>
 			    <th>작성일</th>
+			    <th>작성자</th>
 			    <th>조회수</th>
 			</tr>
 		</thead>
@@ -44,6 +45,7 @@
   					<td>
   						<fmt:formatDate value="${list.regdate}" pattern="yy-MM-dd" />
   					</td>
+  					<td>${list.writer }</td>
   					<td>${list.viewcnt }</td>
   				</tr>
   			</c:forEach>

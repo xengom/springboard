@@ -32,6 +32,10 @@
 			 <input type="text" id="singer" name="singer" class="form-control"/>
 		</div>
 		<div class="form-group">
+			 <label for="writer" class="control-label">작성자 </label>
+			 <input type="text" id="writer" name="writer" value="${member.userName }" readonly="readonly" class="form-control"/>
+		</div>
+		<div class="form-group">
 			<label for="content" class="control-label">추천 이유</label>
 			<textarea id="content" name="content" class="form-control col-sm-5" rows="5"></textarea>
 		</div>	
