@@ -43,10 +43,21 @@ public class MemberController {
 		}
 		return "redirect:/";
 	}
-	// 로그아웃
+	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
 		session.invalidate();
+		return "redirect:/";
+	}
+
+	@RequestMapping(value="/modify", method=RequestMethod.GET)
+	public void getModify() throws Exception{
+	}
+	
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String postModify(HttpSession session, MemberVO vo) throws Exception{
+		service.modify(vo);
+		logout(session);
 		return "redirect:/";
 	}
 }

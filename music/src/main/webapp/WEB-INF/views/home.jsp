@@ -23,6 +23,7 @@
 			어서오세요 ${member.userName}님!
 			<form role="logout" action="member/logout" method="get" autocomplete="off">
 				<button type="submit" class="btn btn-default">로그아웃</button>
+				<button type="button" class="btn btn-default" onclick="location.href='/member/modify'">비밀번호변경</button>
 			</form>
 		</div>
 	</c:if>

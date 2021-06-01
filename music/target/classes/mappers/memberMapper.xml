@@ -10,4 +10,12 @@
 	<select id="login" resultType="com.tj.music.domain.MemberVO">
 		select userid, username from MYMEMBER where userid=#{userId} and userpass=#{userPass}
 	</select>
+	<!-- 회원정보수정 -->
+	<update id="modify">
+		update MYMEMBER set userpass=#{userPass} where username=#{userName}
+	</update>
+	<!-- 회원정보삭제 -->
+	<update id="delete">
+		delete from MYMEMBER where userid=#{userId} and userpass=#{userPass}
+	</update>
 </mapper>
